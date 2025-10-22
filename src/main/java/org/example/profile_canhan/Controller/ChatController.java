@@ -26,14 +26,8 @@ public class ChatController {
     private final RestTemplate restTemplate = new RestTemplate();
     private final ObjectMapper objectMapper = new ObjectMapper();
 
-    // ⚡ Khi mở trình duyệt => hiển thị giao diện ChatBot
+
     @GetMapping("/")
-    public String showChatPage() {
-        return "fragments/ChatBot";
-        //<div th:replace="fragments/chatbot :: chatbot"></div> dán vàotrang muốn sử dụng chatbot này
-        // => /templates/ChatBot.html
-    }
-    @GetMapping("/cv")
     public String showcv() {
         return "fragments/cv";
         //<div th:replace="fragments/chatbot :: chatbot"></div> dán vàotrang muốn sử dụng chatbot này
