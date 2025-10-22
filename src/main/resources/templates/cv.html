@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>CV - Chu Đình Bình</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: "Segoe UI", sans-serif;
+            background: linear-gradient(135deg, #e0f2ff, #ffffff);
+            color: #333;
+            padding: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+        }
+
+        .cv-card {
+            width: 900px;
+            background: #fff;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            display: flex;
+            flex-wrap: wrap;
+            transition: 0.3s;
+        }
+
+        .cv-card:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Bên trái */
+        .left {
+            background: linear-gradient(135deg, #007bff, #00c6ff);
+            color: white;
+            width: 35%;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .left img {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            border: 4px solid white;
+            object-fit: cover;
+            margin-bottom: 20px;
+        }
+
+        .left h2 {
+            margin-bottom: 5px;
+        }
+
+        .left p.role {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        .left .social {
+            margin-top: 20px;
+        }
+
+        .left .social a {
+            color: white;
+            font-size: 18px;
+            margin: 0 8px;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .left .social a:hover {
+            opacity: 0.7;
+        }
+
+        /* Bên phải */
+        .right {
+            width: 65%;
+            padding: 30px 40px;
+        }
+
+        h3.section-title {
+            color: #007bff;
+            border-left: 4px solid #007bff;
+            padding-left: 10px;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+
+        p, li {
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        ul {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        .info-item {
+            margin: 6px 0;
+            font-size: 15px;
+        }
+
+        .contact-options {
+            display: none;
+            margin-top: 10px;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .contact-btn {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s;
+            font-size: 15px;
+        }
+
+        .contact-btn:hover {
+            background: #0056b3;
+        }
+
+        /* Nút chính "Liên hệ ngay" có viền LED động */
+        button.contact-main {
+            background: #00a884;
+            margin-top: 8px;
+            color: #fff;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            position: relative;
+            font-weight: bold;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        /* Hiệu ứng LED chạy quanh nút */
+        button.contact-main::before {
+            content: "";
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            border-radius: 12px;
+            background: linear-gradient(
+                    90deg,
+                    red,
+                    orange,
+                    yellow,
+                    green,
+                    cyan,
+                    blue,
+                    violet,
+                    red
+            );
+            background-size: 400%;
+            z-index: -1;
+            animation: led-border 3s linear infinite;
+        }
+
+        button.contact-main::after {
+            content: "";
+            position: absolute;
+            top: 3px;
+            left: 3px;
+            right: 3px;
+            bottom: 3px;
+            border-radius: 8px;
+            background: #00a884;
+            z-index: -1;
+        }
+
+        @keyframes led-border {
+            0% { background-position: 0%; }
+            100% { background-position: 400%; }
+        }
+
+        button.contact-main:hover {
+            background: #00906f;
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+            transform: scale(1.05);
+            transition: 0.3s;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 13px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+
+<div class="cv-card">
+    <!-- Bên trái -->
+    <div class="left">
+        <img th:src="@{/img/z7062077530271_5dd79e61d875413c14e55d0ad01e06b9.jpg}" alt="Avatar">
+
+        <h2>Chu Đình Bình</h2>
+        <p class="role">Java Developer | Web Developer</p>
+
+        <div class="social">
+<!--            <a href="https://github.com/iambinh15" target="_blank" title="GitHub">💻 GitHub</a>-->
+<!--            <a href="tel:0389415404" title="Zalo">📱 Zalo</a>-->
+<!--            <a href="mailto:iambinh.contact@gmail.com" title="Email">✉️ Email</a>-->
+        </div>
+    </div>
+
+    <!-- Bên phải -->
+    <div class="right">
+        <h3 class="section-title">👋 Giới thiệu</h3>
+        <p>Tôi là một lập trình viên Java yêu thích phát triển phần mềm và xây dựng hệ thống quản lý thông minh.
+            Tôi luôn tìm kiếm cơ hội để học hỏi, áp dụng công nghệ mới và mang lại giá trị thực tế trong công việc.</p>
+
+        <h3 class="section-title">📌 Thông tin cá nhân</h3>
+        <div class="info-item">📧 Email: <b>iambinh.contact@gmail.com</b></div>
+        <div class="info-item">📞 SĐT: <b>0389415404</b></div>
+        <div class="info-item">📍 Địa chỉ: Hà Nội, Việt Nam</div>
+
+        <h3 class="section-title">💡 Kỹ năng</h3>
+        <ul>
+            <li>Java / Spring Boot / Hibernate</li>
+            <li>HTML / CSS / JavaScript / Thymeleaf</li>
+            <li>SQL Server / PostgreSQL</li>
+            <li>Git / GitHub / Deploy Render, Railway</li>
+        </ul>
+
+        <h3 class="section-title">💬 Liên hệ</h3>
+        <button class="contact-main" onclick="toggleContact()">📞 Liên hệ ngay</button>
+
+        <div class="contact-options" id="contactOptions">
+            <button class="contact-btn" onclick="callPhone()">📱 Gọi điện</button>
+            <button class="contact-btn" onclick="sendEmail()">✉️ Gửi Gmail</button>
+        </div>
+    </div>
+    </div>
+
+</div>
+
+<script>
+    function toggleContact() {
+        const options = document.getElementById("contactOptions");
+        options.style.display = options.style.display === "flex" ? "none" : "flex";
+    }
+
+    function callPhone() {
+        window.location.href = "tel:0389415404";
+    }
+
+    function sendEmail() {
+        const email = "iambinh.contact@gmail.com";
+        const subject = encodeURIComponent("Liên hệ hợp tác");
+        const body = encodeURIComponent("Xin chào Chu Đình Bình, tôi muốn trao đổi về...");
+        window.open(`https://mail.google.com/mail/?view=cm&fs=1&to=${email}&su=${subject}&body=${body}`, "_blank");
+    }
+</script>
+<div th:replace="fragments/chatbot :: chatbot"></div>
+</body>
+</html>
