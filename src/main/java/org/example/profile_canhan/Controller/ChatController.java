@@ -34,9 +34,6 @@ public class ChatController {
         // => /templates/ChatBot.html
     }
 
-        //<div th:replace="fragments/chatbot :: chatbot"></div> dán vàotrang muốn sử dụng chatbot này
-        // => /templates/ChatBot.html
-    }
     // ⚡ API xử lý khi người dùng gửi tin nhắn
     @PostMapping("/api/chat")
     @ResponseBody
