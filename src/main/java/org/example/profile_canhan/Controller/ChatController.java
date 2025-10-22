@@ -29,11 +29,16 @@ public class ChatController {
     // ⚡ Khi mở trình duyệt => hiển thị giao diện ChatBot
     @GetMapping("/")
     public String showChatPage() {
+        return "fragments/ChatBot";
+        //<div th:replace="fragments/chatbot :: chatbot"></div> dán vàotrang muốn sử dụng chatbot này
+        // => /templates/ChatBot.html
+    }
+    @GetMapping("/cv")
+    public String showcv() {
         return "cv";
         //<div th:replace="fragments/chatbot :: chatbot"></div> dán vàotrang muốn sử dụng chatbot này
         // => /templates/ChatBot.html
     }
-
     // ⚡ API xử lý khi người dùng gửi tin nhắn
     @PostMapping("/api/chat")
     @ResponseBody
