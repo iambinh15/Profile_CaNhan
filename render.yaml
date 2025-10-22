@@ -3,5 +3,5 @@ services:
     name: profile-canhan
     env: java
     plan: free
-    buildCommand: ./mvnw clean package -DskipTests
+    buildCommand: chmod +x mvnw && ./mvnw clean package -DskipTests
     startCommand: java -jar target/*.jar
