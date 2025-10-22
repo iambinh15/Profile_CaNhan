@@ -32,13 +32,13 @@ public class ChatController {
         return "fragments/ChatBot";
         //<div th:replace="fragments/chatbot :: chatbot"></div> dán vàotrang muốn sử dụng chatbot này
         // => /templates/ChatBot.html
-    }
-    @GetMapping("/")
+    }  @GetMapping("/")
     public String showcv() {
-        return "cv";
+        return "fragments/cv";
         //<div th:replace="fragments/chatbot :: chatbot"></div> dán vàotrang muốn sử dụng chatbot này
         // => /templates/ChatBot.html
     }
+
     // ⚡ API xử lý khi người dùng gửi tin nhắn
     @PostMapping("/api/chat")
     @ResponseBody
