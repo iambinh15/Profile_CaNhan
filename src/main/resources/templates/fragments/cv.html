@@ -4,11 +4,7 @@
     <meta charset="UTF-8">
     <title>CV - Chu Đình Bình</title>
     <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
         body {
             font-family: "Segoe UI", sans-serif;
             background: linear-gradient(135deg, #e0f2ff, #ffffff);
@@ -18,6 +14,7 @@
             justify-content: center;
             align-items: flex-start;
             min-height: 100vh;
+            transition: 0.3s;
         }
 
         .cv-card {
@@ -30,12 +27,8 @@
             flex-wrap: wrap;
             transition: 0.3s;
         }
+        .cv-card:hover { transform: translateY(-5px); }
 
-        .cv-card:hover {
-            transform: translateY(-5px);
-        }
-
-        /* Bên trái */
         .left {
             background: linear-gradient(135deg, #007bff, #00c6ff);
             color: white;
@@ -45,44 +38,17 @@
         }
 
         .left img {
-            width: 140px;
-            height: 140px;
+            width: 140px; height: 140px;
             border-radius: 50%;
             border: 4px solid white;
             object-fit: cover;
             margin-bottom: 20px;
         }
 
-        .left h2 {
-            margin-bottom: 5px;
-        }
+        .left h2 { margin-bottom: 5px; }
+        .left p.role { font-size: 14px; opacity: 0.9; }
 
-        .left p.role {
-            font-size: 14px;
-            opacity: 0.9;
-        }
-
-        .left .social {
-            margin-top: 20px;
-        }
-
-        .left .social a {
-            color: white;
-            font-size: 18px;
-            margin: 0 8px;
-            text-decoration: none;
-            transition: 0.3s;
-        }
-
-        .left .social a:hover {
-            opacity: 0.7;
-        }
-
-        /* Bên phải */
-        .right {
-            width: 65%;
-            padding: 30px 40px;
-        }
+        .right { width: 65%; padding: 30px 40px; }
 
         h3.section-title {
             color: #007bff;
@@ -92,20 +58,9 @@
             font-size: 18px;
         }
 
-        p, li {
-            font-size: 15px;
-            line-height: 1.6;
-        }
-
-        ul {
-            margin-left: 20px;
-            margin-bottom: 15px;
-        }
-
-        .info-item {
-            margin: 6px 0;
-            font-size: 15px;
-        }
+        p, li { font-size: 15px; line-height: 1.6; }
+        ul { margin-left: 20px; margin-bottom: 15px; }
+        .info-item { margin: 6px 0; font-size: 15px; }
 
         .contact-options {
             display: none;
@@ -124,12 +79,8 @@
             transition: 0.3s;
             font-size: 15px;
         }
+        .contact-btn:hover { background: #0056b3; }
 
-        .contact-btn:hover {
-            background: #0056b3;
-        }
-
-        /* Nút chính "Liên hệ ngay" có viền LED động */
         button.contact-main {
             background: #00a884;
             margin-top: 8px;
@@ -143,133 +94,218 @@
             z-index: 0;
             overflow: hidden;
         }
-
-        /* Hiệu ứng LED chạy quanh nút */
         button.contact-main::before {
             content: "";
             position: absolute;
-            top: -2px;
-            left: -2px;
-            right: -2px;
-            bottom: -2px;
+            top: -2px; left: -2px; right: -2px; bottom: -2px;
             border-radius: 12px;
-            background: linear-gradient(
-                    90deg,
-                    red,
-                    orange,
-                    yellow,
-                    green,
-                    cyan,
-                    blue,
-                    violet,
-                    red
-            );
+            background: linear-gradient(90deg, red, orange, yellow, green, cyan, blue, violet, red);
             background-size: 400%;
             z-index: -1;
             animation: led-border 3s linear infinite;
         }
-
         button.contact-main::after {
             content: "";
             position: absolute;
-            top: 3px;
-            left: 3px;
-            right: 3px;
-            bottom: 3px;
+            top: 3px; left: 3px; right: 3px; bottom: 3px;
             border-radius: 8px;
             background: #00a884;
             z-index: -1;
         }
-
-        @keyframes led-border {
-            0% { background-position: 0%; }
-            100% { background-position: 400%; }
-        }
-
+        @keyframes led-border { 0% {background-position:0%} 100% {background-position:400%} }
         button.contact-main:hover {
             background: #00906f;
-            box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+            box-shadow: 0 0 20px rgba(0,255,255,0.5);
             transform: scale(1.05);
             transition: 0.3s;
         }
 
-        footer {
-            text-align: center;
-            margin-top: 20px;
-            font-size: 13px;
-            color: #666;
+        /* 🌗 DARK MODE */
+        [data-theme="dark"] body {
+            background: linear-gradient(135deg, #121212, #1e1e1e);
+            color: #e0e0e0;
+        }
+        [data-theme="dark"] .cv-card { background: #1f1f1f; box-shadow: 0 8px 20px rgba(255,255,255,0.1); }
+        [data-theme="dark"] .right h3.section-title { color: #00c6ff; border-left-color: #00c6ff; }
+        [data-theme="dark"] .left { background: linear-gradient(135deg, #0056b3, #0096c7); }
+
+        /* 🌍 Toggle buttons */
+        .controls {
+            position: fixed;
+            top: 20px;
+            right: 30px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+        .toggle-btn {
+            background: #007bff;
+            border: none;
+            color: white;
+            padding: 8px 14px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+        .toggle-btn:hover { background: #0056b3; }
+
+        /* 📱 Responsive */
+        @media (max-width: 768px) {
+            body { padding: 20px; }
+            .cv-card { flex-direction: column; width: 100%; }
+            .left, .right { width: 100%; }
+            .left { padding: 20px; }
+            .right { padding: 20px; }
+            .controls { right: 10px; top: 10px; }
+        }
+
+        /* 🧭 QR Popup */
+        .qr-popup {
+            display: none;
+            position: absolute;
+            top: 40px;
+            right: 0;
+            background: white;
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            z-index: 1000;
+        }
+
+        .qr-popup img {
+            width: 130px;
+            height: 130px;
         }
     </style>
 </head>
 <body>
-
-<div class="cv-card">
-    <!-- Bên trái -->
-    <div class="left">
-        <img th:src="@{/img/z7062077530271_5dd79e61d875413c14e55d0ad01e06b9.jpg}" alt="Avatar">
-
-        <h2>Chu Đình Bình</h2>
-        <p class="role">Java Developer | Web Developer</p>
-
-        <div class="social">
-<!--            <a href="https://github.com/iambinh15" target="_blank" title="GitHub">💻 GitHub</a>-->
-<!--            <a href="tel:0389415404" title="Zalo">📱 Zalo</a>-->
-<!--            <a href="mailto:iambinh.contact@gmail.com" title="Email">✉️ Email</a>-->
+<!-- 🌗 & 🌍 Controls -->
+<div class="controls">
+    <button id="themeToggle" class="toggle-btn">🌙</button>
+    <button id="langToggle" class="toggle-btn">EN 🇬🇧</button>
+    <div style="position: relative;">
+        <button id="qrToggle" class="toggle-btn">📱 QR Website</button>
+        <div id="qrPopup" class="qr-popup">
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://profile-canhan-i7v7.onrender.com/" alt="QR Code">
         </div>
     </div>
+</div>
 
-    <!-- Bên phải -->
+<div class="cv-card">
+    <div class="left">
+        <img th:src="@{/img/z7062077530271_5dd79e61d875413c14e55d0ad01e06b9.jpg}" alt="Avatar">
+        <h2 id="name">Chu Đình Bình</h2>
+        <p class="role" id="role">Java Developer | Web Developer</p>
+    </div>
+
     <div class="right">
-        <h3 class="section-title">👋 Giới thiệu</h3>
-        <p>Tôi là một lập trình viên Java yêu thích phát triển phần mềm và xây dựng hệ thống quản lý thông minh.
+        <h3 class="section-title" id="introTitle">👋 Giới thiệu</h3>
+        <p id="introText">Tôi là một lập trình viên Java yêu thích phát triển phần mềm và xây dựng hệ thống quản lý thông minh.
             Tôi luôn tìm kiếm cơ hội để học hỏi, áp dụng công nghệ mới và mang lại giá trị thực tế trong công việc.</p>
 
-        <h3 class="section-title">📌 Thông tin cá nhân</h3>
-        <div class="info-item">📧 Email: <b>iambinh.contact@gmail.com</b></div>
-        <div class="info-item">📞 SĐT: <b>0389415404</b></div>
-        <div class="info-item">📍 Địa chỉ: Hà Nội, Việt Nam</div>
+        <h3 class="section-title" id="infoTitle">📌 Thông tin cá nhân</h3>
+        <div class="info-item" id="emailLabel">📧 Email: <b>iambinh.contact@gmail.com</b></div>
+        <div class="info-item" id="phoneLabel">📞 SĐT: <b>0389415404</b></div>
+        <div class="info-item" id="addressLabel">📍 Địa chỉ: Hà Nội, Việt Nam</div>
 
-        <h3 class="section-title">💡 Kỹ năng</h3>
-        <ul>
+        <h3 class="section-title" id="skillsTitle">💡 Kỹ năng</h3>
+        <ul id="skillsList">
             <li>Java / Spring Boot / Hibernate</li>
             <li>HTML / CSS / JavaScript / Thymeleaf</li>
             <li>SQL Server / PostgreSQL</li>
             <li>Git / GitHub / Deploy Render, Railway</li>
         </ul>
 
-        <h3 class="section-title">💬 Liên hệ</h3>
-        <button class="contact-main" onclick="toggleContact()">📞 Liên hệ ngay</button>
-
+        <h3 class="section-title" id="contactTitle">💬 Liên hệ</h3>
+        <button class="contact-main" onclick="toggleContact()" id="contactMain">📞 Liên hệ ngay</button>
         <div class="contact-options" id="contactOptions">
-            <button class="contact-btn" onclick="callPhone()">📱 Gọi điện</button>
-            <button class="contact-btn" onclick="sendEmail()">✉️ Gửi Gmail</button>
+            <button class="contact-btn" onclick="callPhone()" id="callBtn">📱 Gọi điện</button>
+            <button class="contact-btn" onclick="sendEmail()" id="emailBtn">✉️ Gửi Gmail</button>
         </div>
     </div>
-    </div>
-
 </div>
 
 <script>
+    // 🌗 Theme
+    const themeBtn = document.getElementById('themeToggle');
+    const root = document.documentElement;
+    let theme = localStorage.getItem('theme') || 'light';
+    setTheme(theme);
+
+    themeBtn.onclick = () => {
+        theme = theme === 'light' ? 'dark' : 'light';
+        setTheme(theme);
+    };
+    function setTheme(mode) {
+        root.setAttribute('data-theme', mode);
+        themeBtn.textContent = mode === 'dark' ? '☀️' : '🌙';
+        localStorage.setItem('theme', mode);
+    }
+
+    // 🌍 Language
+    const langBtn = document.getElementById('langToggle');
+    const texts = {
+        vi: {
+            introTitle: "👋 Giới thiệu",
+            introText: "Tôi là một lập trình viên Java yêu thích phát triển phần mềm...",
+            infoTitle: "📌 Thông tin cá nhân",
+            emailLabel: "📧 Email: ",
+            phoneLabel: "📞 SĐT: ",
+            addressLabel: "📍 Địa chỉ: Hà Nội, Việt Nam",
+            skillsTitle: "💡 Kỹ năng",
+            contactTitle: "💬 Liên hệ",
+            contactMain: "📞 Liên hệ ngay",
+            callBtn: "📱 Gọi điện",
+            emailBtn: "✉️ Gửi Gmail",
+        },
+        en: {
+            introTitle: "👋 Introduction",
+            introText: "I am a Java developer passionate about software development...",
+            infoTitle: "📌 Personal Information",
+            emailLabel: "📧 Email: ",
+            phoneLabel: "📞 Phone: ",
+            addressLabel: "📍 Address: Hanoi, Vietnam",
+            skillsTitle: "💡 Skills",
+            contactTitle: "💬 Contact",
+            contactMain: "📞 Contact Now",
+            callBtn: "📱 Call",
+            emailBtn: "✉️ Send Email",
+        }
+    };
+    let lang = localStorage.getItem('lang') || 'vi';
+    setLanguage(lang);
+    langBtn.onclick = () => {
+        lang = lang === 'vi' ? 'en' : 'vi';
+        setLanguage(lang);
+    };
+    function setLanguage(l) {
+        const t = texts[l];
+        for (const key in t) if (document.getElementById(key)) document.getElementById(key).textContent = t[key];
+        langBtn.textContent = l === 'vi' ? 'EN 🇬🇧' : 'VI 🇻🇳';
+        localStorage.setItem('lang', l);
+    }
+
+    // 📞 Contact logic
     function toggleContact() {
         const options = document.getElementById("contactOptions");
         options.style.display = options.style.display === "flex" ? "none" : "flex";
     }
-
-    function callPhone() {
-        window.location.href = "tel:0389415404";
-    }
-
+    function callPhone() { window.location.href = "tel:0389415404"; }
     function sendEmail() {
         const email = "iambinh.contact@gmail.com";
-        const subject = encodeURIComponent("Liên hệ hợp tác");
+        const subject = encodeURIComponent("Liên hệ hợp tác / Business Contact");
         const body = encodeURIComponent("Xin chào Chu Đình Bình, tôi muốn trao đổi về...");
         window.open(`https://mail.google.com/mail/?view=cm&fs=1&to=${email}&su=${subject}&body=${body}`, "_blank");
     }
+
+    // 📱 QR toggle
+    const qrBtn = document.getElementById('qrToggle');
+    const qrPopup = document.getElementById('qrPopup');
+    qrBtn.onclick = () => {
+        qrPopup.style.display = qrPopup.style.display === 'block' ? 'none' : 'block';
+    };
 </script>
-<!--<div th:replace="~{chatbot :: chatbot}"></div>-->
-<!-- Gọi fragment ChatBot -->
 <div th:replace="~{fragments/ChatBot :: chatbot}"></div>
-
-
 </body>
 </html>
