@@ -1,7 +1,5 @@
 services:
   - type: web
     name: profile-canhan
-    env: java
+    env: docker
     plan: free
-    buildCommand: "chmod +x mvnw && ./mvnw clean package -DskipTests"
-    startCommand: "java -jar target/*.jar"
