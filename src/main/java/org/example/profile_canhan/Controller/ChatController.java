@@ -27,13 +27,13 @@ public class ChatController {
     private final ObjectMapper objectMapper = new ObjectMapper();
 
     // ⚡ Khi mở trình duyệt => hiển thị giao diện ChatBot
-    @GetMapping("/")
+    @GetMapping("/chat")
     public String showChatPage() {
         return "fragments/ChatBot";
         //<div th:replace="fragments/chatbot :: chatbot"></div> dán vàotrang muốn sử dụng chatbot này
         // => /templates/ChatBot.html
     }
-    @GetMapping("/cv")
+    @GetMapping("/")
     public String showcv() {
         return "cv";
         //<div th:replace="fragments/chatbot :: chatbot"></div> dán vàotrang muốn sử dụng chatbot này
