@@ -35,7 +35,7 @@ public class ChatController {
     }
     @GetMapping("/cv")
     public String showcv() {
-        return "cv";
+        return "fragments/cv";
         //<div th:replace="fragments/chatbot :: chatbot"></div> dán vàotrang muốn sử dụng chatbot này
         // => /templates/ChatBot.html
     }
