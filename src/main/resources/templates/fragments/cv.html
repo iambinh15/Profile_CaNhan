@@ -179,6 +179,16 @@
         }
     </style>
 </head>
+//https://analytics.google.com/   sử dụng để lo người truy cập và thiết bị
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-72BFRRBKYL"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-72BFRRBKYL');
+</script>
+
 <body>
 <!-- 🌗 & 🌍 Controls -->
 <div class="controls">
@@ -306,6 +316,7 @@
         qrPopup.style.display = qrPopup.style.display === 'block' ? 'none' : 'block';
     };
 </script>
+
 <div th:replace="~{fragments/ChatBot :: chatbot}"></div>
 </body>
 </html>
